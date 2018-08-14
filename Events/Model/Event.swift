@@ -9,11 +9,17 @@
 import Foundation
 
 struct Event: Decodable {
+    var topLabel:String
+    var middleLabel:String
     var bottomLabel:String
     var entityId:Int
+    var eventCount:Int
+    var targetId:Int
+    var targetType:String
+    var startDate: Int
+    var rank: Int
     var entityType:String
     var image:String
-    //TODO:Add remaining params
 }
 
 
