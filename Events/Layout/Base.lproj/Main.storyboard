@@ -40,7 +40,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TXJ-q2-E5N">
                                                     <rect key="frame" x="8" y="167" width="359" height="44.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="events ＞" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2mg-bG-aXw">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="events ＞" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2mg-bG-aXw">
                                                             <rect key="frame" x="271" y="14.5" width="80" height="16.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="80" id="hts-Uo-fkB"/>
@@ -90,7 +90,7 @@
                                                             <state key="normal" image="icons8-heart-white"/>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lxu-En-MT8">
-                                                            <rect key="frame" x="49" y="60.5" width="131.5" height="31.5"/>
+                                                            <rect key="frame" x="49" y="60.5" width="302" height="31.5"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -103,6 +103,7 @@
                                                         <constraint firstAttribute="bottom" secondItem="Lxu-En-MT8" secondAttribute="bottom" constant="8" id="3vp-qg-s26"/>
                                                         <constraint firstItem="r8S-wI-LbT" firstAttribute="leading" secondItem="IhX-q4-UQv" secondAttribute="leadingMargin" constant="8" id="DXk-gV-mQJ"/>
                                                         <constraint firstItem="Lxu-En-MT8" firstAttribute="centerY" secondItem="r8S-wI-LbT" secondAttribute="centerY" id="DzE-gv-kxe"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Lxu-En-MT8" secondAttribute="trailing" constant="8" id="O8l-RB-Auy"/>
                                                         <constraint firstAttribute="height" constant="100" id="OQN-gY-SUO"/>
                                                         <constraint firstItem="Lxu-En-MT8" firstAttribute="leading" secondItem="r8S-wI-LbT" secondAttribute="trailing" constant="8" id="tjs-Uu-htV"/>
                                                     </constraints>
@@ -201,7 +202,23 @@
             </objects>
             <point key="canvasLocation" x="1076" y="133.5832083958021"/>
         </scene>
-        <!--View Controller-->
+        <!--My tickets-->
+        <scene sceneID="lFD-Am-V4g">
+            <objects>
+                <viewController id="e60-CE-Dr8" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NdV-wr-Zb8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="A2X-Y5-Pfn"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="My tickets" image="icons8-starred_ticket" id="KrO-17-SJL"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SuR-ZI-nK9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="258" y="826"/>
+        </scene>
+        <!--Browse-->
         <scene sceneID="7nd-Ac-e5L">
             <objects>
                 <viewController id="dpJ-JG-iF1" sceneMemberID="viewController">
@@ -211,11 +228,27 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="KUW-uL-qg8"/>
                     </view>
-                    <tabBarItem key="tabBarItem" id="pSJ-6N-Db1"/>
+                    <tabBarItem key="tabBarItem" title="Browse" image="icons8-safari" id="pSJ-6N-Db1"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VHk-tT-WQW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="714" y="863"/>
+            <point key="canvasLocation" x="1057" y="808"/>
+        </scene>
+        <!--Account-->
+        <scene sceneID="1jg-JT-mnO">
+            <objects>
+                <viewController id="qPZ-bJ-Pcd" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Iq-HA-UaF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="uxr-Ry-ULZ"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Account" image="icons8-gender_neutral_user_filled" id="hyh-jD-mYq"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1kD-OW-egj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-550" y="143"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="2IW-oe-Q2d">
@@ -226,10 +259,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.85098039219999999" green="0.1960784314" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="JUg-2c-exa"/>
                         <segue destination="dpJ-JG-iF1" kind="relationship" relationship="viewControllers" id="SRJ-DC-j1s"/>
+                        <segue destination="e60-CE-Dr8" kind="relationship" relationship="viewControllers" id="PJa-AE-WRw"/>
+                        <segue destination="qPZ-bJ-Pcd" kind="relationship" relationship="viewControllers" id="geH-Cu-KaW"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V7C-5a-NP4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -239,7 +275,10 @@
     </scenes>
     <resources>
         <image name="eric-church" width="812" height="390"/>
+        <image name="icons8-gender_neutral_user_filled" width="25" height="25"/>
         <image name="icons8-heart-white" width="25" height="25"/>
         <image name="icons8-home" width="25" height="25"/>
+        <image name="icons8-safari" width="25" height="25"/>
+        <image name="icons8-starred_ticket" width="20" height="20"/>
     </resources>
 </document>

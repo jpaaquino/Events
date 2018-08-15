@@ -72,12 +72,16 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
             let indexPath = IndexPath(item: sender.tag, section: 0)
             if(isFiltering){
                 favEventsFiltered.remove(at: indexPath.row)
-                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                //self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                self.tableView.reloadData()
+
             }else{
                 favEvents.remove(at: indexPath.row)
-                self.tableView.deleteRows(at: [indexPath], with: .automatic)
-            }
+                //self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                self.tableView.reloadData()
 
+            }
+            
         }
         
     }
@@ -103,21 +107,13 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
         switch selectedSegment {
         case .Suggested:
             textChanged(searchText: searchBar.text!)
-            let currentEvents = isFiltering ? allEventsFiltered : allEvents
-            if(currentEvents.count > 0){
-                let topIndex = IndexPath(row: 0, section: 0)
-                tableView.scrollToRow(at: topIndex, at: .top, animated: false)
-            }
         case .Favorites:
             self.favEvents = self.allEvents.filter{$0.favorite}
             textChanged(searchText: searchBar.text!)
-            let currentEvents = isFiltering ? favEventsFiltered : favEvents
-            if(currentEvents.count > 0){
-                let topIndex = IndexPath(row: 0, section: 0)
-                tableView.scrollToRow(at: topIndex, at: .top, animated: false)
-            }
-            
         }
+        
+        tableView.reloadData()
+
     }
     
     func textChanged(searchText
@@ -140,6 +136,15 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
             
         }
         self.tableView.reloadData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+            let currentEvents = self.isFiltering ? self.favEventsFiltered : self.favEvents
+            if(currentEvents.count > 0){
+                let topIndex = IndexPath(row: 0, section: 0)
+                self.tableView.scrollToRow(at: topIndex, at: .top, animated: true)
+                
+            }
+            
+        })
     }
     
     //MARK: searchBar Delegate
@@ -165,12 +170,12 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
                 currentEvents = isFiltering ? favEventsFiltered : favEvents
             }
             cell.heartButton.addTarget(self, action: #selector(self.tappedButton(sender:)), for: .touchUpInside);
-            cell.heartButton.tag = indexPath.row
 
       
             let event = currentEvents[indexPath.row]
             cell.configureCell(event: event)
-                        
+            cell.heartButton.tag = indexPath.row
+
             return cell
     }
     

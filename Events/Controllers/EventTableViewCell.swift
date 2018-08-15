@@ -48,7 +48,7 @@ class EventTableViewCell: UITableViewCell {
     
     func updateHeartButton(){
         guard let event = self.event else {return}
-        
+
         let defaults = UserDefaults.standard
         let array = defaults.array(forKey: "favorites")  as? [Int] ?? [Int]()
         if(array.contains(event.entityId)){
