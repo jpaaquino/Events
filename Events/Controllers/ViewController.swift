@@ -9,11 +9,17 @@
 import UIKit
 import Alamofire
 
-class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSource, UISearchBarDelegate {
     
     var allEvents = [Event]()
+    var allEventsFiltered = [Event]()
+    
     var favEvents = [Event]()
-
+    var favEventsFiltered = [Event]()
+    
+    var isFiltering = false
+    
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
@@ -33,6 +39,8 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
         fetchURL(url: "https://webservices.vividseats.com/rest/mobile/v1/home/cards",param: ["startDate": dateString,"endDate": "2018-8-18","includeSuggested": "true"])
 
     }
+    
+    
 
     func fetchURL(url:String,param:[String:Any]){
         
@@ -62,6 +70,29 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
         }
     }
     
+    //MARK: searchBar Delegate
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if (searchText.count>0) {
+            isFiltering = true
+            allEventsFiltered = allEvents.filter {
+                $0.topLabel.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+            }
+            favEventsFiltered = favEvents.filter {
+                $0.topLabel.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+            }
+            print(allEventsFiltered)
+        }
+        else
+        {
+            isFiltering = false
+            allEventsFiltered = allEvents
+            favEventsFiltered = favEvents
+
+        }
+        self.tableView.reloadData()
+    }
+    
     //MARK: tableView Delegate & Data Source
     
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -70,9 +101,9 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
             var currentEvents = [Event]()
             switch selectedSegment {
             case .Suggested:
-                currentEvents = self.allEvents
+                currentEvents = isFiltering ? allEventsFiltered : allEvents
             case .Favorites:
-                currentEvents = self.favEvents
+                currentEvents = isFiltering ? favEventsFiltered : favEvents
             }
       
             let event = currentEvents[indexPath.row]
@@ -85,9 +116,9 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
         let selectedSegment = Segments(rawValue: self.segmentedControl.selectedSegmentIndex)!
         switch selectedSegment {
         case .Suggested:
-            return self.allEvents.count
+            return isFiltering == true ? allEventsFiltered.count : allEvents.count
         case .Favorites:
-            return self.favEvents.count
+            return isFiltering == true ? favEventsFiltered.count : favEvents.count
         }
         
     }
