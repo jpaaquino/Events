@@ -20,6 +20,12 @@ struct Event: Decodable {
     var rank: Int
     var entityType:String
     var image:String
+    
+    var favorite:Bool  {
+        let defaults = UserDefaults.standard
+        let array = defaults.array(forKey: "favorites")  as? [Int] ?? [Int]()
+        return array.contains(entityId) ? true : false
+    }
 }
 
 

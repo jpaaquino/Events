@@ -52,7 +52,6 @@ class EventTableViewCell: UITableViewCell {
         self.artistNameLabel.text = event.topLabel
         self.eventLocationLabel.text = event.middleLabel
         self.eventImageView.image =  nil
-        //self.heartButton.setImage(#imageLiteral(resourceName: "icons8-heart-white"), for: .normal)
         updateHeartButton()
         self.eventDatesLabel.text = event.bottomLabel
         self.numberOfEventsLabel.text = "\(event.eventCount) events ＞"
@@ -69,7 +68,6 @@ class EventTableViewCell: UITableViewCell {
             var array = defaults.array(forKey: "favorites")  as? [Int] ?? [Int]()
             if(array.contains(event.entityId)){
                 heartButton.setImage(#imageLiteral(resourceName: "icons8-heart-red"), for: .normal)
-                
             }else{
                 array.append(event.entityId)
                 heartButton.setImage(#imageLiteral(resourceName: "icons8-heart-white"), for: .normal)

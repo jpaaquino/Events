@@ -12,7 +12,14 @@ import Alamofire
 class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
     
     var allEvents = [Event]()
+    var favEvents = [Event]()
+
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
+    private enum Segments: Int {
+        case Suggested = 0, Favorites
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +33,6 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
         fetchURL(url: "https://webservices.vividseats.com/rest/mobile/v1/home/cards",param: ["startDate": dateString,"endDate": "2018-8-18","includeSuggested": "true"])
 
     }
-    
 
     func fetchURL(url:String,param:[String:Any]){
         
@@ -39,19 +45,51 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
                     }
                 }
     
+    @IBAction func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+        let selectedSegment = Segments(rawValue: sender.selectedSegmentIndex)!
+        switch selectedSegment {
+        case .Suggested:
+            tableView.reloadData()
+            let topIndex = IndexPath(row: 0, section: 0)
+            tableView.scrollToRow(at: topIndex, at: .top, animated: false)
+
+        case .Favorites:
+            self.favEvents = self.allEvents.filter{$0.favorite}
+            tableView.reloadData()
+            let topIndex = IndexPath(row: 0, section: 0)
+            tableView.scrollToRow(at: topIndex, at: .top, animated: false)
+            
+        }
+    }
+    
     //MARK: tableView Delegate & Data Source
     
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! EventTableViewCell
-            
-            let event = allEvents[indexPath.row]
+            let selectedSegment = Segments(rawValue: self.segmentedControl.selectedSegmentIndex)!
+            var currentEvents = [Event]()
+            switch selectedSegment {
+            case .Suggested:
+                currentEvents = self.allEvents
+            case .Favorites:
+                currentEvents = self.favEvents
+            }
+      
+            let event = currentEvents[indexPath.row]
             cell.configureCell(event: event)
                         
             return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allEvents.count
+        let selectedSegment = Segments(rawValue: self.segmentedControl.selectedSegmentIndex)!
+        switch selectedSegment {
+        case .Suggested:
+            return self.allEvents.count
+        case .Favorites:
+            return self.favEvents.count
+        }
+        
     }
 
 }
