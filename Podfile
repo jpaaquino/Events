@@ -6,6 +6,7 @@ target 'Events' do
   use_frameworks!
 
 pod 'Alamofire', '~> 4.7'
+pod 'Kingfisher'
 
   # Pods for Events
 

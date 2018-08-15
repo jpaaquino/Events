@@ -144,6 +144,10 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
     
     //MARK: searchBar Delegate
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.endEditing(true)
+    }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
        textChanged(searchText: searchText)
     }

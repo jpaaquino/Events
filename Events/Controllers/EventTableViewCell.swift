@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import Kingfisher
 
 class EventTableViewCell: UITableViewCell {
     
@@ -23,7 +24,6 @@ class EventTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        //addGradientToImage()
 
     }
 
@@ -32,20 +32,7 @@ class EventTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    @IBAction func likeAction(_ sender: UIButton) {
-//        guard let event = self.event else {return}
-//        let defaults = UserDefaults.standard
-//        var array = defaults.array(forKey: "favorites")  as? [Int] ?? [Int]()
-//        if(array.contains(event.entityId)){
-//            array = array.filter { $0 != event.entityId }
-//        }else{
-//            array.append(event.entityId)
-//        }
-//        defaults.set(array, forKey: "favorites")
-//        updateHeartButton()
-        
-    }
-    
+   
     
     func configureCell(event:Event){
         self.event = event
@@ -55,22 +42,20 @@ class EventTableViewCell: UITableViewCell {
         updateHeartButton()
         self.eventDatesLabel.text = event.bottomLabel
         self.numberOfEventsLabel.text = "\(event.eventCount) events ＞"
+        let url = URL(string: event.image)
+        self.eventImageView.kf.setImage(with: url)
+    }
+    
+    func updateHeartButton(){
+        guard let event = self.event else {return}
         
-        Alamofire.request(event.image, method: .get).responseJSON { response in
-            self.eventImageView.image = UIImage(data: response.data!, scale:1)
+        let defaults = UserDefaults.standard
+        let array = defaults.array(forKey: "favorites")  as? [Int] ?? [Int]()
+        if(array.contains(event.entityId)){
+            heartButton.setImage(#imageLiteral(resourceName: "icons8-heart-red"), for: .normal)
+        }else{
+            heartButton.setImage(#imageLiteral(resourceName: "icons8-heart-white"), for: .normal)
         }
     }
-        
-        func updateHeartButton(){
-            guard let event = self.event else {return}
-            
-            let defaults = UserDefaults.standard
-            let array = defaults.array(forKey: "favorites")  as? [Int] ?? [Int]()
-            if(array.contains(event.entityId)){
-                heartButton.setImage(#imageLiteral(resourceName: "icons8-heart-red"), for: .normal)
-            }else{
-                heartButton.setImage(#imageLiteral(resourceName: "icons8-heart-white"), for: .normal)
-            }
-        }
     
 }
