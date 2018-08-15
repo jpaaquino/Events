@@ -88,6 +88,9 @@
                                                                 <constraint firstAttribute="width" constant="25" id="z08-Ps-vV9"/>
                                                             </constraints>
                                                             <state key="normal" image="icons8-heart-white"/>
+                                                            <connections>
+                                                                <action selector="likeAction:" destination="ybi-Ye-e5c" eventType="touchUpInside" id="MXj-db-JJ0"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lxu-En-MT8">
                                                             <rect key="frame" x="49" y="60.5" width="131.5" height="31.5"/>
