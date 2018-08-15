@@ -195,6 +195,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="icons8-home" id="sxa-oZ-uzC"/>
                     <connections>
+                        <outlet property="searchBar" destination="DY3-Zq-R9c" id="lpB-fw-51P"/>
                         <outlet property="segmentedControl" destination="ilK-OY-iDO" id="5Yn-3d-5yP"/>
                         <outlet property="tableView" destination="2G6-Sa-PBz" id="ZLB-GU-q4N"/>
                     </connections>

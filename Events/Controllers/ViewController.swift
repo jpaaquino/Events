@@ -11,12 +11,11 @@ import Alamofire
 
 class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSource, UISearchBarDelegate {
     
+    //MARK: Arrays to populate Table View.
     var allEvents = [Event]()
     var allEventsFiltered = [Event]()
-    
     var favEvents = [Event]()
     var favEventsFiltered = [Event]()
-    
     var isFiltering = false
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -40,7 +39,48 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
 
     }
     
+    func findCurrentArray() -> [Event]{
+        let selectedSegment = Segments(rawValue: self.segmentedControl.selectedSegmentIndex)!
+        switch selectedSegment {
+        case .Suggested:
+            return isFiltering ? allEventsFiltered : allEvents
+        case .Favorites:
+            return isFiltering ? favEventsFiltered : favEvents
+        }
+    }
     
+    @objc func tappedButton(sender : UIButton){
+        var currentArray = findCurrentArray()
+        let event = currentArray[sender.tag]
+        
+        let defaults = UserDefaults.standard
+        var array = defaults.array(forKey: "favorites")  as? [Int] ?? [Int]()
+        if(array.contains(event.entityId)){
+            array = array.filter { $0 != event.entityId }
+        }else{
+            array.append(event.entityId)
+        }
+        defaults.set(array, forKey: "favorites")
+        
+        //If favorite array delete event from list, otherwise just reload cell
+        let selectedSegment = Segments(rawValue: self.segmentedControl.selectedSegmentIndex)!
+        switch selectedSegment {
+        case .Suggested:
+            let indexPath = IndexPath(item: sender.tag, section: 0)
+            tableView.reloadRows(at: [indexPath], with: .none)
+        case .Favorites:
+            let indexPath = IndexPath(item: sender.tag, section: 0)
+            if(isFiltering){
+                favEventsFiltered.remove(at: indexPath.row)
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            }else{
+                favEvents.remove(at: indexPath.row)
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+
+        }
+        
+    }
 
     func fetchURL(url:String,param:[String:Any]){
         
@@ -54,25 +94,34 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
                 }
     
     @IBAction func segmentedControlValueChanged(_ sender: UISegmentedControl) {
-        let selectedSegment = Segments(rawValue: sender.selectedSegmentIndex)!
+        updateTableViewWithFilteredContent()
+    }
+    
+    func updateTableViewWithFilteredContent(){
+        let index = segmentedControl.selectedSegmentIndex
+        let selectedSegment = Segments(rawValue: index)!
         switch selectedSegment {
         case .Suggested:
-            tableView.reloadData()
-            let topIndex = IndexPath(row: 0, section: 0)
-            tableView.scrollToRow(at: topIndex, at: .top, animated: false)
-
+            textChanged(searchText: searchBar.text!)
+            let currentEvents = isFiltering ? allEventsFiltered : allEvents
+            if(currentEvents.count > 0){
+                let topIndex = IndexPath(row: 0, section: 0)
+                tableView.scrollToRow(at: topIndex, at: .top, animated: false)
+            }
         case .Favorites:
             self.favEvents = self.allEvents.filter{$0.favorite}
-            tableView.reloadData()
-            let topIndex = IndexPath(row: 0, section: 0)
-            tableView.scrollToRow(at: topIndex, at: .top, animated: false)
+            textChanged(searchText: searchBar.text!)
+            let currentEvents = isFiltering ? favEventsFiltered : favEvents
+            if(currentEvents.count > 0){
+                let topIndex = IndexPath(row: 0, section: 0)
+                tableView.scrollToRow(at: topIndex, at: .top, animated: false)
+            }
             
         }
     }
     
-    //MARK: searchBar Delegate
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    func textChanged(searchText
+        :String){
         if (searchText.count>0) {
             isFiltering = true
             allEventsFiltered = allEvents.filter {
@@ -88,9 +137,15 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
             isFiltering = false
             allEventsFiltered = allEvents
             favEventsFiltered = favEvents
-
+            
         }
         self.tableView.reloadData()
+    }
+    
+    //MARK: searchBar Delegate
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+       textChanged(searchText: searchText)
     }
     
     //MARK: tableView Delegate & Data Source
@@ -105,6 +160,9 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
             case .Favorites:
                 currentEvents = isFiltering ? favEventsFiltered : favEvents
             }
+            cell.heartButton.addTarget(self, action: #selector(self.tappedButton(sender:)), for: .touchUpInside);
+            cell.heartButton.tag = indexPath.row
+
       
             let event = currentEvents[indexPath.row]
             cell.configureCell(event: event)
@@ -113,6 +171,7 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
         let selectedSegment = Segments(rawValue: self.segmentedControl.selectedSegmentIndex)!
         switch selectedSegment {
         case .Suggested:
@@ -122,6 +181,7 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
         }
         
     }
+    
 
 }
 

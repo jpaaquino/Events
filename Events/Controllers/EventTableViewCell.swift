@@ -33,16 +33,16 @@ class EventTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     @IBAction func likeAction(_ sender: UIButton) {
-        guard let event = self.event else {return}
-        let defaults = UserDefaults.standard
-        var array = defaults.array(forKey: "favorites")  as? [Int] ?? [Int]()
-        if(array.contains(event.entityId)){
-            array = array.filter { $0 != event.entityId }
-        }else{
-            array.append(event.entityId)
-        }
-        defaults.set(array, forKey: "favorites")
-        updateHeartButton()
+//        guard let event = self.event else {return}
+//        let defaults = UserDefaults.standard
+//        var array = defaults.array(forKey: "favorites")  as? [Int] ?? [Int]()
+//        if(array.contains(event.entityId)){
+//            array = array.filter { $0 != event.entityId }
+//        }else{
+//            array.append(event.entityId)
+//        }
+//        defaults.set(array, forKey: "favorites")
+//        updateHeartButton()
         
     }
     
@@ -65,11 +65,10 @@ class EventTableViewCell: UITableViewCell {
             guard let event = self.event else {return}
             
             let defaults = UserDefaults.standard
-            var array = defaults.array(forKey: "favorites")  as? [Int] ?? [Int]()
+            let array = defaults.array(forKey: "favorites")  as? [Int] ?? [Int]()
             if(array.contains(event.entityId)){
                 heartButton.setImage(#imageLiteral(resourceName: "icons8-heart-red"), for: .normal)
             }else{
-                array.append(event.entityId)
                 heartButton.setImage(#imageLiteral(resourceName: "icons8-heart-white"), for: .normal)
             }
         }
