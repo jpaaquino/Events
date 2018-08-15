@@ -21,6 +21,8 @@ class EventTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        //addGradientToImage()
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -28,6 +30,17 @@ class EventTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    func addGradientToImage(){
+        let gradient = CAGradientLayer()
+        gradient.frame = eventImageView.bounds
+        let whiteGradient = UIColor(white: 0.0, alpha: 1.0).cgColor
+        let blackGradient = UIColor(white: 0.0, alpha: 0.1).cgColor
+        gradient.colors = [blackGradient, whiteGradient]
+        
+        eventImageView.layer.insertSublayer(gradient, at: 0)
+
+    }
+    
     
     func configureCell(event:Event){
         self.artistNameLabel.text = event.topLabel

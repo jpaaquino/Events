@@ -16,6 +16,7 @@
 		3FCCF6DF21231D5E007DDB6B /* ExtensionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCCF6DE21231D5E007DDB6B /* ExtensionDate.swift */; };
 		3FCCF6E121232039007DDB6B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCCF6E021232039007DDB6B /* Event.swift */; };
 		3FCCF6E921235748007DDB6B /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCCF6E821235748007DDB6B /* EventTableViewCell.swift */; };
+		3FCCF6EB21246A59007DDB6B /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCCF6EA21246A59007DDB6B /* GradientView.swift */; };
 		CF4633CE4DE2CC1F622EE779 /* Pods_Events.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BC37352B077DF193A3537D5 /* Pods_Events.framework */; };
 		D256DC48B424ACD206360C7E /* Pods_EventsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 220105DF0E1FC9DE734EB832 /* Pods_EventsTests.framework */; };
 /* End PBXBuildFile section */
@@ -48,6 +49,7 @@
 		3FCCF6DE21231D5E007DDB6B /* ExtensionDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDate.swift; sourceTree = "<group>"; };
 		3FCCF6E021232039007DDB6B /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		3FCCF6E821235748007DDB6B /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		3FCCF6EA21246A59007DDB6B /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		7BC37352B077DF193A3537D5 /* Pods_Events.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Events.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A53303F1FD1DABFCB9E892 /* Pods-EventsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EventsTests/Pods-EventsTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				3FCCF6E021232039007DDB6B /* Event.swift */,
+				3FCCF6EA21246A59007DDB6B /* GradientView.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 			files = (
 				3FCCF6E121232039007DDB6B /* Event.swift in Sources */,
 				3F2FED802121D22900B9D982 /* ViewController.swift in Sources */,
+				3FCCF6EB21246A59007DDB6B /* GradientView.swift in Sources */,
 				3FCCF6DF21231D5E007DDB6B /* ExtensionDate.swift in Sources */,
 				3FCCF6E921235748007DDB6B /* EventTableViewCell.swift in Sources */,
 				3F2FED7E2121D22900B9D982 /* AppDelegate.swift in Sources */,
