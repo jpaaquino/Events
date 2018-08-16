@@ -18,10 +18,12 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
     var favEventsFiltered = [Event]()
     var isFiltering = false
     
+    
     //MARK: Outlets
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
     
     //Create an enum for the segmented control indexes to make it more readable
     private enum Segments: Int {
