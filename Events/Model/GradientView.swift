@@ -8,6 +8,8 @@
 
 import UIKit
 
+// Gradient View used to darken the images to make the event name readable. Without this the contrast with the white text was making the text hard to read on a light background. This is setup as a gradient so that the bottom of the image where the text is is darker but it gets lighter as you move upwards so that the image looks clearer.
+//Used IBDesignable so that the color and alpha adjustments can be made on Storyboard and we can see the changes in real time.
 @IBDesignable
 class GradientView: UIView {
     

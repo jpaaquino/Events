@@ -8,22 +8,41 @@
 
 import XCTest
 @testable import Events
+@testable import Alamofire
 
 class EventsTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+       
+        
     }
+    
+   
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    // This unit test will check if we are able to fetch the events from server without any errors
+    func testFetchEvents() {
+        let dateString = Date().convertToString(format: "yyyy-M-d")
+        let url = "https://webservices.vividseats.com/rest/mobile/v1/home/cards"
+        let param = ["startDate": dateString,"endDate": "2018-8-18","includeSuggested": "true"]
+        let promise = expectation(description: "No error")
+        
+        Alamofire.request(url, method: .post, parameters: param, encoding: JSONEncoding.default)
+            .responseJSON { response in
+                if(response.error == nil){
+                    print("no error")
+                    promise.fulfill()
+                }else{
+                    print("error fetching")
+                    XCTFail("Error: \(response.error.debugDescription)")
+                }
+        }
+        waitForExpectations(timeout: 5, handler: nil)
     }
     
     func testPerformanceExample() {

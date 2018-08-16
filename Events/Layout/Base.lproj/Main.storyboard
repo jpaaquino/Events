@@ -108,12 +108,6 @@
                                                         <constraint firstItem="Lxu-En-MT8" firstAttribute="leading" secondItem="r8S-wI-LbT" secondAttribute="trailing" constant="8" id="tjs-Uu-htV"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="firstColor">
-                                                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="secondColor">
-                                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="startAlpha">
                                                             <real key="value" value="0.90000000000000002"/>
                                                         </userDefinedRuntimeAttribute>
@@ -170,7 +164,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="56n-Dr-Grl"/>
                                 </constraints>
-                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" smartDashesType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="ODF-7G-uvs"/>
                                 </connections>
