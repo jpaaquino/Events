@@ -17,12 +17,17 @@ You will be evaluated based on:
 
 ## Final project comments
 
+* Make sure to use the file named "Events.xcworkspace" to test this project as it is using Cocoapods
+* Integrated Kingfisher library for image caching
+* Integrated Alamofire for network fetching
 * Added a unit test to confirm that we are able to fetch the list of events from the server correctly
 * Implemented a search feature to filter the events by name
 * Implemented a favorites tab that you populate by tapping the heart button on the home screen
 * Added icons for app and tab bar
 * Created a black gradient layer on top of the event images to make text readable
 * There is nothing implemented on the Browse, My tickets and Account tabs
+* Used User Defaults for persistence
+* Implemented Auto Layout
 
 
 
