@@ -72,16 +72,7 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
     @objc func tappedButton(sender : UIButton){
         var currentArray = findCurrentArray()
         let event = currentArray[sender.tag]
-        
-        //An array of entityId(integers) is saved using User Defaults so that it persists after the app is killed. This array is then used to filter the favorites from the main array and create a new favorites array.
-        let defaults = UserDefaults.standard
-        var array = defaults.array(forKey: "favorites")  as? [Int] ?? [Int]()
-        if(array.contains(event.entityId)){
-            array = array.filter { $0 != event.entityId }
-        }else{
-            array.append(event.entityId)
-        }
-        defaults.set(array, forKey: "favorites")
+        event.updateFavoritesArray()
         
         //If favorite array delete event from list otherwise the number of cells on the table view wouldn't match the number of elements on array.
         // If not favorite just reload the individual cell
@@ -89,7 +80,7 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
         switch selectedSegment {
         case .Suggested:
             let indexPath = IndexPath(item: sender.tag, section: 0)
-            tableView.reloadRows(at: [indexPath], with: .none)
+            self.tableView.reloadRows(at: [indexPath], with: .none)
         case .Favorites:
             let indexPath = IndexPath(item: sender.tag, section: 0)
             if(isFiltering){

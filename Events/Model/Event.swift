@@ -26,6 +26,18 @@ struct Event: Decodable {
         let array = defaults.array(forKey: "favorites")  as? [Int] ?? [Int]()
         return array.contains(entityId) ? true : false
     }
+    
+    func updateFavoritesArray(){
+        //An array of entityId(integers) is saved using User Defaults so that it persists after the app is killed. This array is then used to filter the favorites from the main array and create a new favorites array.
+        let defaults = UserDefaults.standard
+        var array = defaults.array(forKey: "favorites")  as? [Int] ?? [Int]()
+        if(array.contains(self.entityId)){
+            array = array.filter { $0 != self.entityId }
+        }else{
+            array.append(self.entityId)
+        }
+        defaults.set(array, forKey: "favorites")
+    }
 }
 
 
