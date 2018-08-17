@@ -14,7 +14,7 @@
 		3F2FED882121D22D00B9D982 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F2FED862121D22D00B9D982 /* LaunchScreen.storyboard */; };
 		3F2FED932121D22D00B9D982 /* EventsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2FED922121D22D00B9D982 /* EventsTests.swift */; };
 		3FC06DAC21273F9900B99001 /* AlamofireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC06DAB21273F9900B99001 /* AlamofireManager.swift */; };
-		3FC06DAE2127495800B99001 /* EventsArrays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC06DAD2127495800B99001 /* EventsArrays.swift */; };
+		3FC06DAE2127495800B99001 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC06DAD2127495800B99001 /* Events.swift */; };
 		3FCCF6DF21231D5E007DDB6B /* ExtensionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCCF6DE21231D5E007DDB6B /* ExtensionDate.swift */; };
 		3FCCF6E121232039007DDB6B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCCF6E021232039007DDB6B /* Event.swift */; };
 		3FCCF6E921235748007DDB6B /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCCF6E821235748007DDB6B /* EventTableViewCell.swift */; };
@@ -49,7 +49,7 @@
 		3F2FED922121D22D00B9D982 /* EventsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTests.swift; sourceTree = "<group>"; };
 		3F2FED942121D22D00B9D982 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FC06DAB21273F9900B99001 /* AlamofireManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireManager.swift; sourceTree = "<group>"; };
-		3FC06DAD2127495800B99001 /* EventsArrays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsArrays.swift; sourceTree = "<group>"; };
+		3FC06DAD2127495800B99001 /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		3FCCF6DE21231D5E007DDB6B /* ExtensionDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDate.swift; sourceTree = "<group>"; };
 		3FCCF6E021232039007DDB6B /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		3FCCF6E821235748007DDB6B /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
@@ -134,7 +134,7 @@
 				3FCCF6E021232039007DDB6B /* Event.swift */,
 				3FCCF6EA21246A59007DDB6B /* GradientView.swift */,
 				3FC06DAB21273F9900B99001 /* AlamofireManager.swift */,
-				3FC06DAD2127495800B99001 /* EventsArrays.swift */,
+				3FC06DAD2127495800B99001 /* Events.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -345,7 +345,7 @@
 				3F2FED802121D22900B9D982 /* ViewController.swift in Sources */,
 				3FCCF6EB21246A59007DDB6B /* GradientView.swift in Sources */,
 				3FCCF6DF21231D5E007DDB6B /* ExtensionDate.swift in Sources */,
-				3FC06DAE2127495800B99001 /* EventsArrays.swift in Sources */,
+				3FC06DAE2127495800B99001 /* Events.swift in Sources */,
 				3FCCF6E921235748007DDB6B /* EventTableViewCell.swift in Sources */,
 				3FC06DAC21273F9900B99001 /* AlamofireManager.swift in Sources */,
 				3F2FED7E2121D22900B9D982 /* AppDelegate.swift in Sources */,
