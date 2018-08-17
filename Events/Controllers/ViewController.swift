@@ -18,7 +18,6 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
     var favEventsFiltered = [Event]()
     var isFiltering = false
     
-    
     //MARK: Outlets
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -38,23 +37,16 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let dateString = Date().convertToString(format: "yyyy-M-d")
-        fetchURL(url: "https://webservices.vividseats.com/rest/mobile/v1/home/cards",param: ["startDate": dateString,"endDate": "2018-8-18","includeSuggested": "true"])
-
+        fetchEvents()
     }
     
-    //MARK: Network methods
-    
-    func fetchURL(url:String,param:[String:Any]){
-        
-        //Fetch the events from server and parse into an array of events using the decodable protocol
-        Alamofire.request(url, method: .post, parameters: param, encoding: JSONEncoding.default)
-            .responseJSON { response in
-                self.allEvents = try! JSONDecoder().decode(Array<Event>.self, from: response.data!)
-                DispatchQueue.main.async(){
-                    self.tableView.reloadData()
-                }
-        }
+    func fetchEvents(){
+        let dateString = Date().convertToString(format: "yyyy-M-d")
+        AlamofireManager.fetchURL(url: "https://webservices.vividseats.com/rest/mobile/v1/home/cards", param: ["startDate": dateString,"endDate": "2018-8-18","includeSuggested": "true"], completion: { [weak self] data in
+            self?.allEvents = data
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }})
     }
     
     //Choose the correct array considering if it's the suggested or favorite tab and if it's being filtered by the search bar or not.
@@ -127,7 +119,6 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
             isFiltering = false
             allEventsFiltered = allEvents
             favEventsFiltered = favEvents
-            
         }
         self.tableView.reloadData()
         
@@ -182,9 +173,6 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
         case .Favorites:
             return isFiltering == true ? favEventsFiltered.count : favEvents.count
         }
-        
     }
-    
-
 }
 

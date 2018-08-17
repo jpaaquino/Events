@@ -21,25 +21,23 @@ class EventsTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
+
     
-    // This unit test will check if we are able to fetch the events from server without any errors
     func testFetchEvents() {
-        let dateString = Date().convertToString(format: "yyyy-M-d")
-        let url = "https://webservices.vividseats.com/rest/mobile/v1/home/cards"
-        let param = ["startDate": dateString,"endDate": "2018-8-18","includeSuggested": "true"]
-        let promise = expectation(description: "No error")
         
-        Alamofire.request(url, method: .post, parameters: param, encoding: JSONEncoding.default)
-            .responseJSON { response in
-                if(response.error == nil){
-                    print("no error")
-                    promise.fulfill()
-                }else{
-                    print("error fetching")
-                    XCTFail("Error: \(response.error.debugDescription)")
-                }
-        }
-        waitForExpectations(timeout: 5, handler: nil)
+        let dateString = Date().convertToString(format: "yyyy-M-d")
+        let promise = expectation(description: "Fetched data successfully")
+
+        AlamofireManager.fetchURL(url: "https://webservices.vividseats.com/rest/mobile/v1/home/cards", param: ["startDate": dateString,"endDate": "2018-8-18","includeSuggested": "true"], completion: {  data in
+            if(data.count > 0){
+            promise.fulfill()
+            }else{
+            XCTFail("Error: No data")
+            }
+            
+        })
+         waitForExpectations(timeout: 5, handler: nil)
+
     }
     
     func testPerformanceExample() {
