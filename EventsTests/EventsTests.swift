@@ -18,7 +18,6 @@ class EventsTests: XCTestCase {
     
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
 
@@ -31,8 +30,6 @@ class EventsTests: XCTestCase {
             XCTAssertNotNil(data, "data should not be nil")
             XCTAssertTrue(data.count > 0, "data should not be empty")
             promise.fulfill()
- 
-            
         })
         waitForExpectations(timeout: 8){ (error) in
             print(error?.localizedDescription ?? "timeout")
@@ -40,10 +37,15 @@ class EventsTests: XCTestCase {
 
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
+    func testPerformanceFetchEvents() {
         self.measure {
-            // Put the code you want to measure the time of here.
+            let exp = expectation(description: "Fetch events")
+            AlamofireManager.fetchURL(completion: {  data in
+                exp.fulfill()
+            })
+            waitForExpectations(timeout: 8){ (error) in
+                print(error?.localizedDescription ?? "timeout")
+            }
         }
     }
     
