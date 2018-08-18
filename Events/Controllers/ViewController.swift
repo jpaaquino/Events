@@ -31,12 +31,8 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
     }
     
     func fetchEvents(){
-        let dateString = Date().convertToString(format: "yyyy-M-d")
-        let oneWeekfromNow: Date = (Calendar.current as NSCalendar).date(byAdding: .day, value: 7, to: Date(), options: [])!
-        let oneWeekFromNowString = oneWeekfromNow.convertToString(format: "yyyy-M-d")
         
-        
-        AlamofireManager.fetchURL(url: "https://webservices.vividseats.com/rest/mobile/v1/home/cards", param: ["startDate": dateString,"endDate": oneWeekFromNowString,"includeSuggested": "true"], completion: { [weak self] data in
+        AlamofireManager.fetchURL(completion: { [weak self] data in
             Events.all = data
             Events.all.sort {
                 ($0.startDate, $0.targetId) <
@@ -72,7 +68,10 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
     }
     
     @IBAction func segmentedControlValueChanged(_ sender: UISegmentedControl) {
-        updateTableViewWithFilteredContent()
+        UIView.transition(with: self.view, duration: 0.3, options: .transitionCrossDissolve, animations: {
+            self.updateTableViewWithFilteredContent()
+        }, completion: nil)
+
     }
     
     func updateTableViewWithFilteredContent(){

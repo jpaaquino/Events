@@ -17,5 +17,10 @@ extension Date
         return dateFormatter.string(from: self)
     }
     
+    func addDaysToCurrentDate(n:Int) -> Date{
+    let nDaysFromNow: Date = (Calendar.current as NSCalendar).date(byAdding: .day, value: n, to: self, options: [])!
+     return nDaysFromNow
+    }
+    
 }
 

@@ -25,18 +25,18 @@ class EventsTests: XCTestCase {
     
     func testFetchEvents() {
         
-        let dateString = Date().convertToString(format: "yyyy-M-d")
         let promise = expectation(description: "Fetched data successfully")
 
-        AlamofireManager.fetchURL(url: "https://webservices.vividseats.com/rest/mobile/v1/home/cards", param: ["startDate": dateString,"endDate": "2018-8-18","includeSuggested": "true"], completion: {  data in
-            if(data.count > 0){
+        AlamofireManager.fetchURL(completion: {  data in
+            XCTAssertNotNil(data, "data should not be nil")
+            XCTAssertTrue(data.count > 0, "data should not be empty")
             promise.fulfill()
-            }else{
-            XCTFail("Error: No data")
-            }
+ 
             
         })
-         waitForExpectations(timeout: 5, handler: nil)
+        waitForExpectations(timeout: 8){ (error) in
+            print(error?.localizedDescription ?? "timeout")
+        }
 
     }
     

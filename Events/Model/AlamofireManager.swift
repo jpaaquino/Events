@@ -11,21 +11,20 @@ import Alamofire
 
 struct AlamofireManager{
     
-    static func fetchURL(url:String,param:[String:Any],completion: @escaping ([Event]) -> Void){
+    static func fetchURL(completion: @escaping ([Event]) -> Void){
+        let dateString = Date().convertToString(format: "yyyy-M-d")
+        let oneWeekFromNow = Date().addDaysToCurrentDate(n: 7)
+        let oneWeekFromNowString = oneWeekFromNow.convertToString(format: "yyyy-M-d")
     
     //Fetch the events from server and parse into an array of events using the decodable protocol
-    Alamofire.request(url, method: .post, parameters: param, encoding: JSONEncoding.default)
+    Alamofire.request("https://webservices.vividseats.com/rest/mobile/v1/home/cards", method: .post, parameters: ["startDate": dateString,"endDate": oneWeekFromNowString,"includeSuggested": "true"], encoding: JSONEncoding.default)
         .responseJSON(completionHandler: {response -> Void in
             
             switch response.result {
-                
             case .success(let value):
                 print("value \(value)")
-    
                 let allEvents:[Event] = try! JSONDecoder().decode(Array<Event>.self, from: response.data!)
-
                 completion(allEvents)
-                
             case .failure(let error):
                 print(error)
                 completion([])
@@ -33,3 +32,4 @@ struct AlamofireManager{
         })
 }
 }
+
