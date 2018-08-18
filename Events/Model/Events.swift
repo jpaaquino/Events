@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Events {
+struct Events {
     static var all = [Event]()
     static var allFiltered = [Event]()
     static var favorites = [Event]()

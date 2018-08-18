@@ -9,9 +9,9 @@
 import Foundation
 import Alamofire
 
-class AlamofireManager{
+struct AlamofireManager{
     
-class func fetchURL(url:String,param:[String:Any],completion: @escaping ([Event]) -> Void){
+    static func fetchURL(url:String,param:[String:Any],completion: @escaping ([Event]) -> Void){
     
     //Fetch the events from server and parse into an array of events using the decodable protocol
     Alamofire.request(url, method: .post, parameters: param, encoding: JSONEncoding.default)
