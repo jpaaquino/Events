@@ -41,25 +41,23 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
     
     //Called when the like button is tapped
     @objc func tappedButton(sender : UIButton){
+        let hitPoint = sender.convert(CGPoint.zero, to: tableView)
+        guard let indexPath = tableView.indexPathForRow(at: hitPoint) else {return}
         var currentArray = Events.findCurrentArray(segmentedControlSelectedValue: self.segmentedControl.selectedSegmentIndex, searchText: self.searchBar.text!)
-        let event = currentArray[sender.tag]
+        let event = currentArray[indexPath.row]
         event.updateFavoritesArray()
         
-        //If favorite array delete event from list otherwise the number of cells on the table view wouldn't match the number of elements on array.
-        // If not favorite just reload the individual cell
         let selectedSegment = Events.findCurrentSegment(segmentedControl: self.segmentedControl)
         switch selectedSegment {
         case .Suggested:
-            let indexPath = IndexPath(item: sender.tag, section: 0)
             self.tableView.reloadRows(at: [indexPath], with: .none)
         case .Favorites:
-            let indexPath = IndexPath(item: sender.tag, section: 0)
             if(Events.isFiltering){
                 Events.favoritesFiltered.remove(at: indexPath.row)
-                self.tableView.reloadData()
+                self.tableView.deleteRows(at: [indexPath], with: .fade)
             }else{
                 Events.favorites.remove(at: indexPath.row)
-                self.tableView.reloadData()
+                self.tableView.deleteRows(at: [indexPath], with: .fade)
             }
         }
     }
@@ -109,7 +107,6 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
     //MARK: searchBar Delegate
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        //Dismiss keyboard
         self.searchBar.endEditing(true)
     }
     
@@ -125,7 +122,6 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
         
         let event = self.currentEvents[indexPath.row]
         cell.configureCell(event: event)
-        cell.heartButton.tag = indexPath.row
         
         return cell
     }
