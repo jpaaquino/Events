@@ -116,10 +116,13 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
     
     //MARK: tableView Delegate & Data Source
     
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 220
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! EventTableViewCell
         cell.heartButton.addTarget(self, action: #selector(self.tappedButton(sender:)), for: .touchUpInside);
-        
         let event = self.currentEvents[indexPath.row]
         cell.configureCell(event: event)
         
