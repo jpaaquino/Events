@@ -34,10 +34,18 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
         let dateString = Date().convertToString(format: "yyyy-M-d")
         AlamofireManager.fetchURL(url: "https://webservices.vividseats.com/rest/mobile/v1/home/cards", param: ["startDate": dateString,"endDate": "2018-8-18","includeSuggested": "true"], completion: { [weak self] data in
             Events.all = data
+            Events.all.sort {
+                ($0.startDate, $0.targetId) <
+                    ($1.startDate, $1.targetId)
+            }
+            
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
             }})
     }
+    
+    
+    
     
     //Called when the like button is tapped
     @objc func tappedButton(sender : UIButton){

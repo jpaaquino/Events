@@ -132,7 +132,6 @@
 			isa = PBXGroup;
 			children = (
 				3FCCF6E021232039007DDB6B /* Event.swift */,
-				3FCCF6EA21246A59007DDB6B /* GradientView.swift */,
 				3FC06DAB21273F9900B99001 /* AlamofireManager.swift */,
 				3FC06DAD2127495800B99001 /* Events.swift */,
 			);
@@ -144,6 +143,7 @@
 			children = (
 				3F2FED7F2121D22900B9D982 /* ViewController.swift */,
 				3FCCF6E821235748007DDB6B /* EventTableViewCell.swift */,
+				3FCCF6EA21246A59007DDB6B /* GradientView.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
