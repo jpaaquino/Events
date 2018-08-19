@@ -41,16 +41,13 @@
                                                     <rect key="frame" x="8" y="167" width="359" height="44.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="events ＞" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2mg-bG-aXw">
-                                                            <rect key="frame" x="271" y="14.5" width="80" height="16.5"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="80" identifier="002" id="hts-Uo-fkB"/>
-                                                            </constraints>
+                                                            <rect key="frame" x="291.5" y="14.5" width="59.5" height="16.5"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                             <color key="textColor" red="0.64313725490196083" green="0.64313725490196083" blue="0.64313725490196083" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event location here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFh-pD-F4v">
-                                                            <rect key="frame" x="8" y="0.0" width="255" height="23"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Event location here heb wjhebjehb dehbnejwk ewbdewbdw wekbdekwbdfk " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFh-pD-F4v">
+                                                            <rect key="frame" x="8" y="0.0" width="275.5" height="23"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="23" identifier="003" id="93O-yH-J4B"/>
                                                             </constraints>
@@ -59,7 +56,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event dates here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6dr-hA-dzU">
-                                                            <rect key="frame" x="8" y="23" width="255" height="21.5"/>
+                                                            <rect key="frame" x="8" y="23" width="275.5" height="21.5"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                                             <color key="textColor" red="0.32941176470588235" green="0.32941176470588235" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -159,7 +156,7 @@
                                     <action selector="segmentedControlValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="wJ9-dU-q9F"/>
                                 </connections>
                             </segmentedControl>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="DY3-Zq-R9c">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Team, performer or event" translatesAutoresizingMaskIntoConstraints="NO" id="DY3-Zq-R9c">
                                 <rect key="frame" x="0.0" y="20" width="375" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="56n-Dr-Grl"/>
@@ -203,14 +200,41 @@
                     <view key="view" contentMode="scaleToFill" id="NdV-wr-Zb8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2nI-Oo-Xaj">
+                                <rect key="frame" x="161" y="237.5" width="53" height="32"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Sign In"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to view your tickets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0b-3h-jqf">
+                                <rect key="frame" x="114" y="289.5" width="148" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.3294117647" green="0.3294117647" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Tickets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="62y-Gm-w9G">
+                                <rect key="frame" x="138" y="28" width="98.5" height="23"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="62y-Gm-w9G" firstAttribute="top" secondItem="A2X-Y5-Pfn" secondAttribute="top" constant="8" id="9iP-IN-NyJ"/>
+                            <constraint firstItem="c0b-3h-jqf" firstAttribute="top" secondItem="2nI-Oo-Xaj" secondAttribute="bottom" constant="20" id="K7O-bl-FjQ"/>
+                            <constraint firstItem="c0b-3h-jqf" firstAttribute="centerX" secondItem="NdV-wr-Zb8" secondAttribute="centerX" id="XnY-CT-QqI"/>
+                            <constraint firstItem="2nI-Oo-Xaj" firstAttribute="centerY" secondItem="NdV-wr-Zb8" secondAttribute="centerY" constant="-80" id="bLX-2A-bQf"/>
+                            <constraint firstItem="62y-Gm-w9G" firstAttribute="centerX" secondItem="NdV-wr-Zb8" secondAttribute="centerX" id="wTn-FP-zlB"/>
+                            <constraint firstItem="2nI-Oo-Xaj" firstAttribute="centerX" secondItem="NdV-wr-Zb8" secondAttribute="centerX" id="wcJ-7j-EwW"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="A2X-Y5-Pfn"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="My tickets" image="icons8-starred_ticket" id="KrO-17-SJL"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SuR-ZI-nK9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="258" y="826"/>
+            <point key="canvasLocation" x="256.80000000000001" y="825.33733133433293"/>
         </scene>
         <!--Browse-->
         <scene sceneID="7nd-Ac-e5L">
@@ -219,7 +243,27 @@
                     <view key="view" contentMode="scaleToFill" id="7hx-Kk-etL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Browse" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUJ-Sb-pu8">
+                                <rect key="frame" x="153" y="28" width="69" height="23"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Browse for tickets here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AnQ-fM-WtO">
+                                <rect key="frame" x="99" y="283.5" width="176" height="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="AnQ-fM-WtO" firstAttribute="centerX" secondItem="7hx-Kk-etL" secondAttribute="centerX" id="DMo-Qg-tXy"/>
+                            <constraint firstItem="eUJ-Sb-pu8" firstAttribute="top" secondItem="KUW-uL-qg8" secondAttribute="top" constant="8" id="Jpd-bt-Ral"/>
+                            <constraint firstItem="eUJ-Sb-pu8" firstAttribute="centerX" secondItem="7hx-Kk-etL" secondAttribute="centerX" id="SNF-9j-Dka"/>
+                            <constraint firstItem="AnQ-fM-WtO" firstAttribute="centerY" secondItem="7hx-Kk-etL" secondAttribute="centerY" constant="-40" id="ufh-BX-N1N"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="KUW-uL-qg8"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Browse" image="icons8-safari" id="pSJ-6N-Db1"/>
@@ -235,14 +279,41 @@
                     <view key="view" contentMode="scaleToFill" id="5Iq-HA-UaF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zMu-Mu-Q4b">
+                                <rect key="frame" x="161" y="237.5" width="53" height="32"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Sign In"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to view your account details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3MT-oN-waF">
+                                <rect key="frame" x="81" y="289.5" width="213" height="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="0.3294117647" green="0.3294117647" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Im4-aj-gck">
+                                <rect key="frame" x="149" y="28" width="76" height="23"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Im4-aj-gck" firstAttribute="centerX" secondItem="5Iq-HA-UaF" secondAttribute="centerX" id="1gt-us-xBZ"/>
+                            <constraint firstItem="zMu-Mu-Q4b" firstAttribute="centerX" secondItem="5Iq-HA-UaF" secondAttribute="centerX" id="C5b-ra-U68"/>
+                            <constraint firstItem="3MT-oN-waF" firstAttribute="top" secondItem="zMu-Mu-Q4b" secondAttribute="bottom" constant="20" id="Coe-fs-OoA"/>
+                            <constraint firstItem="zMu-Mu-Q4b" firstAttribute="centerY" secondItem="5Iq-HA-UaF" secondAttribute="centerY" constant="-80" id="DMP-Dq-Bhl"/>
+                            <constraint firstItem="3MT-oN-waF" firstAttribute="centerX" secondItem="5Iq-HA-UaF" secondAttribute="centerX" id="hpM-qO-0TE"/>
+                            <constraint firstItem="Im4-aj-gck" firstAttribute="top" secondItem="uxr-Ry-ULZ" secondAttribute="top" constant="8" id="mEe-RK-YsP"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="uxr-Ry-ULZ"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Account" image="icons8-gender_neutral_user_filled" id="hyh-jD-mYq"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1kD-OW-egj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-550" y="143"/>
+            <point key="canvasLocation" x="-497" y="134"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="2IW-oe-Q2d">
