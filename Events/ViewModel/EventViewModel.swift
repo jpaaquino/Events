@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct EventViewModel {
+class EventViewModel {
     
     let event: Event
     var topLabel: String {

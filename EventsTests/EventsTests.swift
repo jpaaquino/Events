@@ -35,6 +35,7 @@ class EventsTests: XCTestCase {
         XCTAssertEqual(event.rank, viewModel.rank)
         XCTAssertEqual(event.entityType, viewModel.entityType)
         XCTAssertEqual(event.image, viewModel.image)
+        XCTAssertEqual("\(event.eventCount) events ＞", viewModel.numberOfEventsString)
         XCTAssertNotNil(viewModel.imageURL)
 
     }
