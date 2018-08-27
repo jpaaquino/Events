@@ -9,10 +9,10 @@
 import UIKit
 
 struct Events {
-    static var all = [Event]()
-    static var allFiltered = [Event]()
-    static var favorites = [Event]()
-    static var favoritesFiltered = [Event]()
+    static var all = [EventViewModel]()
+    static var allFiltered = [EventViewModel]()
+    static var favorites = [EventViewModel]()
+    static var favoritesFiltered = [EventViewModel]()
     static var isFiltering = false
     
     enum Segments: Int {
@@ -20,7 +20,7 @@ struct Events {
     }
     
     //Choose the correct array considering if it's the suggested or favorite tab and if it's being filtered by the search bar or not.
-    static func findCurrentArray(segmentedControlSelectedValue:Int,searchText:String) -> [Event]{
+    static func findCurrentArray(segmentedControlSelectedValue:Int,searchText:String) -> [EventViewModel]{
        
         Events.isFiltering = searchText == "" ? false : true
         let selectedSegment = Segments(rawValue: segmentedControlSelectedValue)!

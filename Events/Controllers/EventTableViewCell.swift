@@ -19,43 +19,17 @@ class EventTableViewCell: UITableViewCell {
     @IBOutlet weak var eventDatesLabel: UILabel!
     @IBOutlet weak var numberOfEventsLabel: UILabel!
     
-    var event:Event?
+    var eventViewModel:EventViewModel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-   
-    
-    func configureCell(event:Event){
-        self.event = event
-        self.artistNameLabel.text = event.topLabel
-        self.eventLocationLabel.text = event.middleLabel
+    func configureCell(eventViewModel:EventViewModel){
+        self.eventViewModel = eventViewModel
+        self.artistNameLabel.text = eventViewModel.topLabel
+        self.eventLocationLabel.text = eventViewModel.middleLabel
         self.eventImageView.image =  nil
-        updateHeartButton()
-        self.eventDatesLabel.text = event.bottomLabel
-        self.numberOfEventsLabel.text = "\(event.eventCount) events ＞"
-        let url = URL(string: event.image)
-        self.eventImageView.kf.setImage(with: url)
-    }
-    
-    func updateHeartButton(){
-        guard let event = self.event else {return}
-
-        let defaults = UserDefaults.standard
-        let array = defaults.array(forKey: "favorites")  as? [Int] ?? [Int]()
-        if(array.contains(event.entityId)){
-            heartButton.setImage(#imageLiteral(resourceName: "icons8-heart-red"), for: .normal)
-        }else{
-            heartButton.setImage(#imageLiteral(resourceName: "icons8-heart-white"), for: .normal)
-        }
+        self.eventDatesLabel.text = eventViewModel.bottomLabel
+        self.numberOfEventsLabel.text = eventViewModel.numberOfEventsString
+        self.eventImageView.kf.setImage(with: eventViewModel.imageURL)
+        self.heartButton.setImage(eventViewModel.heartImage, for: .normal)
     }
     
 }

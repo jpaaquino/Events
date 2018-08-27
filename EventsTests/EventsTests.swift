@@ -20,6 +20,24 @@ class EventsTests: XCTestCase {
     override func tearDown() {
         super.tearDown()
     }
+    
+    func testViewModel(){
+        let event = Event(topLabel: "Top Label", middleLabel: "middle label", bottomLabel: "bottom label", entityId: 1, eventCount: 10, targetId: 75, targetType: "target type", startDate: 100, rank: 5, entityType: "entity type", image: "http://www.google.com")
+        let viewModel = EventViewModel(event: event)
+        XCTAssertEqual(event.topLabel, viewModel.topLabel)
+        XCTAssertEqual(event.middleLabel, viewModel.middleLabel)
+        XCTAssertEqual(event.bottomLabel, viewModel.bottomLabel)
+        XCTAssertEqual(event.entityId, viewModel.entityId)
+        XCTAssertEqual(event.eventCount, viewModel.eventCount)
+        XCTAssertEqual(event.targetId, viewModel.targetId)
+        XCTAssertEqual(event.targetType, viewModel.targetType)
+        XCTAssertEqual(event.startDate, viewModel.startDate)
+        XCTAssertEqual(event.rank, viewModel.rank)
+        XCTAssertEqual(event.entityType, viewModel.entityType)
+        XCTAssertEqual(event.image, viewModel.image)
+        XCTAssertNotNil(viewModel.imageURL)
+
+    }
 
     
     func testFetchEvents() {

@@ -16,7 +16,7 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
-    var currentEvents:[Event] {
+    var currentEvents:[EventViewModel] {
         return Events.findCurrentArray(segmentedControlSelectedValue: self.segmentedControl.selectedSegmentIndex, searchText: self.searchBar.text!)
     }
     
@@ -33,7 +33,7 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
     func fetchEvents(){
         
         AlamofireManager.fetchURL(completion: { [weak self] data in
-            Events.all = data
+            Events.all = data.map({return EventViewModel(event: $0)})
             Events.all.sort {
                 ($0.startDate, $0.targetId) <
                     ($1.startDate, $1.targetId)
@@ -131,8 +131,8 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! EventTableViewCell
         cell.heartButton.addTarget(self, action: #selector(self.tappedButton(sender:)), for: .touchUpInside);
-        let event = self.currentEvents[indexPath.row]
-        cell.configureCell(event: event)
+        let eventViewModel = self.currentEvents[indexPath.row]
+        cell.configureCell(eventViewModel: eventViewModel)
         
         return cell
     }

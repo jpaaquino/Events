@@ -21,11 +21,11 @@ struct Event: Decodable {
     var entityType:String
     var image:String
     
-    var favorite:Bool  {
-        let defaults = UserDefaults.standard
-        let array = defaults.array(forKey: "favorites")  as? [Int] ?? [Int]()
-        return array.contains(entityId) ? true : false
-    }
+//    var favorite:Bool  {
+//        let defaults = UserDefaults.standard
+//        let array = defaults.array(forKey: "favorites")  as? [Int] ?? [Int]()
+//        return array.contains(entityId) ? true : false
+//    }
     
     func updateFavoritesArray(){
         //An array of entityId(integers) is saved using User Defaults so that it persists after the app is killed. This array is then used to filter the favorites from the main array and create a new favorites array.
