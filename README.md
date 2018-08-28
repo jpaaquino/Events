@@ -16,7 +16,7 @@ You will be evaluated based on:
 * Testability
 
 ## Architecture
-with
+
 * This project was developed using the MVVM design pattern. The main reason to choose this solution is scalability and testability. Although a MVC pattern would work fine for this project as it currently is, as the project grows it would be important to have a more defined separation of concerns with the addition of the ViewModel.
 * A VIPER design pattern would be overkill for this project as it is more suitable for big applications and large teams.
 
