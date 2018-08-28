@@ -11,6 +11,7 @@ import UIKit
 class EventViewModel {
     
     let event: Event
+    
     var topLabel: String {
         return self.event.topLabel
     }
